@@ -125,7 +125,7 @@ func (request ApiRequest) SendReportGeneralRequest(dateStart time.Time, dateEnd 
 	}
 
 	if(dateEnd.IsZero()){
-		dateEnd = time.Now()
+		dateEnd = time.Now().UTC()
 	}
 
 	data := GeneralReportRequest{
@@ -154,7 +154,7 @@ func (request ApiRequest) SendReportChartRequest(dateStart time.Time, dateEnd ti
 	}
 
 	if(dateEnd.IsZero()){
-		dateEnd = time.Now()
+		dateEnd = time.Now().UTC()
 	}
 
 	data := ChartReportRequest{
@@ -178,7 +178,7 @@ func (request ApiRequest) SendReportOrderRequest(dateStart time.Time, dateEnd ti
 	}
 
 	if(dateEnd.IsZero()){
-		dateEnd = time.Now()
+		dateEnd = time.Now().UTC()
 	}
 
 	data := ChartReportRequest{
@@ -194,7 +194,7 @@ func (request ApiRequest) sendGetRequest(data interface{}, api string) (map[stri
 
 	h := md5.New() 
 	hash := hex.EncodeToString(h.Sum(nil))
-	date := time.Now().Format("2006-01-02T15:04:05+00:00")
+	date := time.Now().UTC().Format("2006-01-02T15:04:05+00:00")
 	
 
 	var tr *http.Transport
