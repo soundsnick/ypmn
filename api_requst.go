@@ -51,7 +51,7 @@ func (request ApiRequest) sendPostRequest(data interface{}, api string) (map[str
 	h := md5.New() 
 	h.Write([]byte(json_data))
 	hash := hex.EncodeToString(h.Sum(nil))
-	date := time.Now().Format("2006-01-02T15:04:05+00:00")
+	date := time.Now().UTC().Format("2006-01-02T15:04:05+00:00")
 	
 
 	var tr *http.Transport
